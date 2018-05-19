@@ -12,8 +12,8 @@ config :logger, level: :warn
 # Configure your database
 config :coach_messages, CoachMessages.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: System.get_env("PG_USER") || "postgres",
+  password: System.get_env("PG_PASSWORD") || "postgres",
   database: "coach_messages_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

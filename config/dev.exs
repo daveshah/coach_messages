@@ -51,8 +51,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :coach_messages, CoachMessages.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: System.get_env("PG_USER") || "postgres",
+  password: System.get_env("PG_PASSWORD") || "postgres",
   database: "coach_messages_dev",
   hostname: "localhost",
   pool_size: 10
